@@ -1,9 +1,14 @@
+
 # kubernetes-vagrant-coreos-cluster
 Turnkey **[Kubernetes](https://github.com/GoogleCloudPlatform/kubernetes)**
 cluster setup with **[Vagrant 2.1.1+](https://www.vagrantup.com)** and
 **[CoreOS](https://coreos.com)**.
 
 If you're lazy, or in a hurry, jump to the [TL;DR](#tldr) section.
+
+## this is fixed version. I added powershell script to create coredns-deployment.yaml
+1) run ./plugins/dns/coredns/deploy.ps1 10.100.0.10/24 "cluster.local" plugins/dns/coredns/coredns.yaml.sed temp/coredns-deployment.yaml
+2) vagrant up
 
 ## Pre-requisites
 
