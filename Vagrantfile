@@ -151,13 +151,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "coreos-#{CHANNEL}"
   config.vm.box_version = "= #{COREOS_VERSION}"
   config.vm.box_url = "#{upstream}/coreos_production_vagrant.json"
-
+  
+  
+  
   ["vmware_fusion", "vmware_workstation"].each do |vmware|
     config.vm.provider vmware do |v, override|
       override.vm.box_url = "#{upstream}/coreos_production_vagrant_vmware_fusion.json"
     end
   end
-
+  
+  
+  
   config.vm.provider :parallels do |vb, override|
     override.vm.box = "AntonioMeireles/coreos-#{CHANNEL}"
     override.vm.box_url = "https://vagrantcloud.com/AntonioMeireles/coreos-#{CHANNEL}"
@@ -258,8 +262,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
           # give setup file executable permissions
           system "chmod +x temp/setup"
-
-          system "#{__dir__}/plugins/dns/coredns/deploy.sh 10.100.0.10/24 #{DNS_DOMAIN} #{__dir__}/plugins/dns/coredns/coredns.yaml.sed > #{__dir__}/temp/coredns-deployment.yaml"
+          
+		  #"cluster.local" 
+          
+		  
 
           # Replace __CLUSTER_CIDR__ in calico.yaml.tmpl with the value of CLUSTER_CIDR
           calicoTmpl = File.read("#{__dir__}/plugins/calico/calico.yaml.tmpl")
